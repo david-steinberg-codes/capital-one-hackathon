@@ -93,8 +93,8 @@ const handlers = {
             });
 
             this.emit(':tell', `The big spender this month was ${top_spender}, who spent ${most_spent} dollars across ${top_spender_transactions} transactions`);
-
         }));
+        
     },
     'GetTransactions': function() {
         this.emit(':tell', "Here are your recent transactions");
