@@ -94,7 +94,20 @@ const handlers = {
 
             this.emit(':tell', `The big spender this month was ${top_spender}, who spent ${most_spent} dollars across ${top_spender_transactions} transactions`);
         }));
-        
+
+    },
+    'GetBill': function() {
+        api('payments', {"account_id": TEST_ACCOUNT, "date_from": "10/2017"}).then(response => {
+            var month = response[0].payments[0].month;
+            var card = response[0].card_type;
+            var bill = Math.floor(response[0].payments[0].total_monthly_balance);
+            var remaining = Math.floor(response[0].payments[0].total_balance_remaining);
+            if (remaining === 0) {
+                this.emit(':tell', `In ${month}, your ${card} card had a balance of ${bill} dollars, which has been paid in full.`);
+            } else {
+                this.emit(':tell', `In ${month}, your ${card} card had a balance of ${bill} dollars, of which you still owe ${remaining} dollars`);
+            }
+        });
     },
     'GetTransactions': function() {
         this.emit(':tell', "Here are your recent transactions");
