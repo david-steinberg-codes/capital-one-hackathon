@@ -32,8 +32,10 @@ const handlers = {
         this.emit(':tell', "Your credit card number is three...seven...nine...hey wait a minute, I probably shouldn't say that out loud");
     },
     'GetRewards': function() {
-        api('transactions', {"account_id": 270600000 }).then(response => {
-            this.emit(':tell', "The month is " + response[0].customers[0].transactions[0].month);
+        api('rewards', {"account_id": TEST_ACCOUNT, "date_from": "10/2017"}).then(response => {
+            var card = response[0].card_type;
+            var points = Math.floor(response[0].rewards[0].rewards_remaining);
+            this.emit(':tell', `Your ${card} card has ${points} points remaining in total`);
         });
  
     },
