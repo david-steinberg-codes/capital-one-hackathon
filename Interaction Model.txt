@@ -6,23 +6,25 @@ Intent Schema
       "intent": "GetRewards"
     },
     {
-      "intent": "GetRewardsByMonth",
       "slots": [
         {
           "name": "month",
           "type": "LIST_OF_MONTHS"
         }
-      ]
+      ],
+      "intent": "GetRewardsByMonth"
     },
     {
       "intent": "GetTransactions"
     },
     {
       "intent": "GetFamily"
+    },
+    {
+      "intent": "GetCreditCard"
     }
   ]
 }
-
 
 Custom Slots
 
@@ -56,3 +58,4 @@ GetTransactions where am I spending money
 GetFamily who else is on my account
 GetFamily who are my family members
 GetFamily who my family members are
+GetCreditCard what my credit card number is

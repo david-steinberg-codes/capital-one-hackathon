@@ -28,6 +28,9 @@ const handlers = {
     'LaunchRequest': function () {
         this.emit(':tell', this.t('HELP_MESSAGE'));
     },
+    'GetCreditCard': function() {
+        this.emit(':tell', "Your credit card number is three...seven...nine...hey wait a minute, I probably shouldn't say that out loud");
+    },
     'GetRewards': function() {
         api('transactions', {"account_id": 270600000 }).then(response => {
             this.emit(':tell', "The month is " + response[0].customers[0].transactions[0].month);
