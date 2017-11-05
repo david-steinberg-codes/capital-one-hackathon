@@ -1,0 +1,58 @@
+Intent Schema
+
+{
+  "intents": [
+    {
+      "intent": "GetRewards"
+    },
+    {
+      "intent": "GetRewardsByMonth",
+      "slots": [
+        {
+          "name": "month",
+          "type": "LIST_OF_MONTHS"
+        }
+      ]
+    },
+    {
+      "intent": "GetTransactions"
+    },
+    {
+      "intent": "GetFamily"
+    }
+  ]
+}
+
+
+Custom Slots
+
+LIST_OF_MONTHS
+
+January
+February
+March
+April
+May
+June
+July
+August
+September
+October
+November
+December
+
+
+Sample Utterances
+
+GetRewards how many reward points do I have
+GetRewards how many points I have
+GetRewards how many reward points I have
+GetRewards how many total points I have
+GetRewards how many total reward points I have
+GetRewardsByMonth how many points I earned in {month}
+GetRewardsByMonth what are my points for {month}
+GetRewardsByMonth what are my points in {month}
+GetTransactions where am I spending money
+GetFamily who else is on my account
+GetFamily who are my family members
+GetFamily who my family members are
