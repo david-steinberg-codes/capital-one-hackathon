@@ -35,7 +35,7 @@ const handlers = {
         api('rewards', {"account_id": TEST_ACCOUNT, "date_from": "10/2017"}).then(response => {
             var card = response[0].card_type;
             var points = Math.floor(response[0].rewards[0].rewards_remaining);
-            this.emit(':tell', `Your ${card} card has ${points} points remaining in total`);
+            this.emit(':tell', `Your ${card} card has ${points} points remaining`);
         });
  
     },
@@ -64,6 +64,37 @@ const handlers = {
             });
             this.emit(':tell', message);
         });
+    },
+    'GetBigSpender': function() {
+        //Spend a little time with me
+
+        var family = {}; //lookup table
+        var most_spent = 0;
+        var top_spender = 'Nobody';
+        var top_spender_transactions = 0;
+
+        api('customers', {"account_id": TEST_ACCOUNT}).then(response => {
+            response[0].customers.forEach(person => {
+                family[person.customer_id] = {name: `${person.first_name} ${person.last_name}`, spendings: 0, transactions: 0};
+            });
+        })
+        .then(api('transactions', {"account_id": TEST_ACCOUNT, "date_from": "10/01/2017"}).then(response => {
+            response[0].customers.forEach(person => {
+                person.transactions.forEach(transaction => {
+                    family[person.customer_id].spendings += transaction.amount;
+                    family[person.customer_id].transactions++;
+
+                    if (family[person.customer_id].spendings >= most_spent) {
+                        most_spent = Math.floor(family[person.customer_id].spendings);
+                        top_spender = family[person.customer_id].name; 
+                        top_spender_transactions = family[person.customer_id].transactions;
+                    }
+                });
+            });
+
+            this.emit(':tell', `The big spender this month was ${top_spender}, who spent ${most_spent} dollars across ${top_spender_transactions} transactions`);
+
+        }));
     },
     'GetTransactions': function() {
         this.emit(':tell', "Here are your recent transactions");

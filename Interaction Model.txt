@@ -22,10 +22,12 @@ Intent Schema
     },
     {
       "intent": "GetCreditCard"
+    },
+    {
+      "intent": "GetBigSpender"
     }
   ]
 }
-
 Custom Slots
 
 LIST_OF_MONTHS
@@ -51,6 +53,7 @@ GetRewards how many points I have
 GetRewards how many reward points I have
 GetRewards how many total points I have
 GetRewards how many total reward points I have
+GetRewards how many points I have right now
 GetRewardsByMonth how many points I earned in {month}
 GetRewardsByMonth what are my points for {month}
 GetRewardsByMonth what are my points in {month}
@@ -59,3 +62,4 @@ GetFamily who else is on my account
 GetFamily who are my family members
 GetFamily who my family members are
 GetCreditCard what my credit card number is
+GetBigSpender who spent the most this month
