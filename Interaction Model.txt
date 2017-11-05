@@ -15,9 +15,6 @@ Intent Schema
       "intent": "GetRewardsByMonth"
     },
     {
-      "intent": "GetTransactions"
-    },
-    {
       "intent": "GetFamily"
     },
     {
@@ -57,7 +54,6 @@ GetRewards how many points I have right now
 GetRewardsByMonth how many points I earned in {month}
 GetRewardsByMonth what are my points for {month}
 GetRewardsByMonth what are my points in {month}
-GetTransactions where am I spending money
 GetFamily who else is on my account
 GetFamily who are my family members
 GetFamily who my family members are

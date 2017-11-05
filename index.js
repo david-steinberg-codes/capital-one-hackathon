@@ -109,9 +109,6 @@ const handlers = {
             }
         });
     },
-    'GetTransactions': function() {
-        this.emit(':tell', "Here are your recent transactions");
-    },
     'AMAZON.HelpIntent': function () {
         const speechOutput = this.t('HELP_MESSAGE');
         const reprompt = this.t('HELP_MESSAGE');
